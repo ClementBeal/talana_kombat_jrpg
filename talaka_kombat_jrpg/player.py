@@ -1,5 +1,19 @@
+from typing import Literal
+
+
 class ButtonCombination:
-    def __init__(self, hit_button: str, move_buttons: str) -> None:
+    """
+    The simplest way to define a combination of buttons for a skill
+
+    hit_button: only one button "P" or "K"
+    move_buttons: a list of moves buttons. Either "A", "W", "S", "D"
+    """
+
+    def __init__(
+        self,
+        hit_button: Literal["P", "K"],
+        move_buttons: list[Literal["A", "W", "S", "D"]],
+    ) -> None:
         self.hit_button = hit_button
         self.move_buttons = move_buttons
 
