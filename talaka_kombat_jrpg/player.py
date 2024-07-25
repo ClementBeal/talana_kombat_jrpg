@@ -1,5 +1,6 @@
 class Skill:
-    pass
+    def __init__(self, name: str) -> None:
+        self.name = name
 
 
 class Player:
@@ -13,4 +14,4 @@ class Player:
         self.skills: list[Skill] = []
 
     def add_skill(self, new_skill: Skill):
-        pass
+        self.skills.append(new_skill)
