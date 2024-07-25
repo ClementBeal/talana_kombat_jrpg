@@ -3,20 +3,25 @@ from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
 
 
 @pytest.fixture
-def player():
-    return Player("Player 1")
+def player(player_1: Player):
+    return player_1
+
+
+class MockSkill(Skill):
+    def __init__(self) -> None:
+        super().__init__(
+            "MockSkill",
+            2,
+            ButtonCombination([], []),
+        )
+
+    def get_dammage_message(self, origin_player: Player, target_player: Player) -> str:
+        return ""
 
 
 @pytest.fixture
 def skill():
-    return Skill(
-        "Skill 1",
-        dammage=2,
-        button_combination=ButtonCombination(
-            [],
-            [],
-        ),
-    )
+    return MockSkill()
 
 
 def test_player__init():
@@ -27,23 +32,11 @@ def test_player__init():
     assert player.energy == 6
 
 
-def test_player__add_skill(player: Player):
-    new_skill = Skill(
-        name="Taladoken",
-        dammage=1,
-        button_combination=ButtonCombination(
-            hit_buttons=["P"],
-            move_buttons=["A"],
-        ),
-    )
-    player.add_skill(new_skill)
+def test_player__add_skill(player: Player, skill: Skill):
+    player.add_skill(skill)
 
     assert len(player.skills) == 1
-    assert player.skills[0].name == "Taladoken"
-    assert player.skills[0].dammage == 1
-    assert player.skills[0].button_combination.hit_button == ["P"]
-    assert len(player.skills[0].button_combination.move_buttons) == 1
-    assert player.skills[0].button_combination.move_buttons[0] == "A"
+    assert player.skills[0] == skill
 
 
 def test_player__is_dead(player: Player):

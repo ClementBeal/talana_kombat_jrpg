@@ -1,4 +1,8 @@
-from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
+from talaka_kombat_jrpg.player import ButtonCombination, Player
+from talaka_kombat_jrpg.skills.patada import Patada
+from talaka_kombat_jrpg.skills.puno import Puno
+from talaka_kombat_jrpg.skills.remuyuken import Remuyuken
+from talaka_kombat_jrpg.skills.taladoken import Taladoken
 
 
 class ArnaldorShuatseneguer(Player):
@@ -6,36 +10,32 @@ class ArnaldorShuatseneguer(Player):
         super().__init__("Arnaldor Shuatseneguer")
 
         self.add_skill(
-            Skill(
-                name="Remuyuken",
-                dammage=3,
+            Remuyuken(
+                3,
                 button_combination=ButtonCombination(
                     hit_buttons=["K"], move_buttons=["S", "A"]
                 ),
-            )
+            ),
         )
         self.add_skill(
-            Skill(
-                name="Taladoken",
-                dammage=2,
+            Taladoken(
+                2,
                 button_combination=ButtonCombination(
                     hit_buttons=["P"], move_buttons=["A", "S", "A"]
                 ),
-            )
+            ),
         )
         self.add_skill(
-            Skill(
-                name="Patada",
-                dammage=1,
+            Patada(
+                1,
                 button_combination=ButtonCombination(
                     hit_buttons=["K"], move_buttons=[]
                 ),
             )
         )
         self.add_skill(
-            Skill(
-                name="Puño",
-                dammage=1,
+            Puno(
+                1,
                 button_combination=ButtonCombination(
                     hit_buttons=["P"], move_buttons=[]
                 ),

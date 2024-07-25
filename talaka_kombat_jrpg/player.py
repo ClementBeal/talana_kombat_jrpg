@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from typing import Literal
 
 
@@ -18,7 +19,7 @@ class ButtonCombination:
         self.move_buttons = move_buttons
 
 
-class Skill:
+class Skill(ABC):
     def __init__(
         self,
         name: str,
@@ -28,6 +29,12 @@ class Skill:
         self.name = name
         self.dammage = dammage
         self.button_combination = button_combination
+
+    @abstractmethod
+    def get_dammage_message(
+        self, origin_player: "Player", target_player: "Player"
+    ) -> str:
+        pass
 
 
 class Player:
