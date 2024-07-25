@@ -1,4 +1,4 @@
-from talaka_kombat_jrpg.player import Player, Skill
+from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
 
 
 def test_player__init():
@@ -13,6 +13,10 @@ def test_player__add_skill():
     new_skill = Skill(
         name="Taladoken",
         cost=1,
+        button_combination=ButtonCombination(
+            hit_button="P",
+            move_buttons="",
+        ),
     )
     player = Player(player_name="Tony")
     player.add_skill(new_skill)
@@ -20,3 +24,5 @@ def test_player__add_skill():
     assert len(player.skills) == 1
     assert player.skills[0].name == "Taladoken"
     assert player.skills[0].cost == 1
+    assert player.skills[0].button_combination.hit_button == "P"
+    assert player.skills[0].button_combination.move_buttons == ""
