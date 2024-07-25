@@ -1,6 +1,7 @@
 from talaka_kombat_jrpg.characters.arnaldor_shuatseneguer import ArnaldorShuatseneguer
 from talaka_kombat_jrpg.characters.tony_stallone import TonyStallone
 from talaka_kombat_jrpg.player import Player
+from talaka_kombat_jrpg.skill_parser import SkillParser
 
 
 class FightSimulator:
@@ -23,7 +24,7 @@ class FightSimulator:
         self.player_1: Player = TonyStallone()
         self.player_2: Player = ArnaldorShuatseneguer()
 
-    def start_fight(self) -> Player:
+    def start_fight(self, fight_data: str) -> Player:
         """
         Simulates a fight between 2 players
 
@@ -32,18 +33,28 @@ class FightSimulator:
         tour = 0
         player_1_is_first = False
 
+        skill_parser = SkillParser()
+        skill_parser.parse(fight_data)
+
         # we don't stop the fight until one of the player is dead
         while not self.player_1.is_dead() and not self.player_2.is_dead():
             # get the actions/skills for each player
+
+            player_1_skill = skill_parser.get_skill(self.player_1, True, tour)
+            player_2_skill = skill_parser.get_skill(self.player_2, False, tour)
 
             if tour == 0:
                 # 1. find the first player to attack
                 pass
 
             if player_1_is_first:
-                self.player_1.attack(self.player_2, self.player_1.skills[0])
+                self.player_1.attack(self.player_2, player_1_skill)
+                if not self.player_2.is_dead():
+                    self.player_2.attack(self.player_1, player_2_skill)
             else:
-                self.player_2.attack(self.player_1, self.player_2.skills[0])
+                self.player_2.attack(self.player_1, player_2_skill)
+                if not self.player_1.is_dead():
+                    self.player_1.attack(self.player_2, player_1_skill)
 
             tour += 1
 
