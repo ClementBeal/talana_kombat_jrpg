@@ -15,6 +15,9 @@ class SkillParser:
     def get_skills(self, player: Player, is_player_1: bool, tour: int) -> list[Skill]:
         player_key = "player1" if is_player_1 else "player2"
 
+        if len(self.fight_data[player_key]["movimientos"]) <= tour:
+            return []
+
         current_moves = self.fight_data[player_key]["movimientos"][tour]
         current_hit = self.fight_data[player_key]["golpes"][tour]
 

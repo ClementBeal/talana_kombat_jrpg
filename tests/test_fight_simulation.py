@@ -18,3 +18,20 @@ def test_fight_simulator():
 
     assert winner is simulator.player_2
     assert winner.energy == 2
+
+
+def test_fight_simulator__two():
+    fight_data = {
+        "player1": {"movimientos": ["DSD", "S"], "golpes": ["P", ""]},
+        "player2": {
+            "movimientos": ["", "ASA", "DA", "AAA", "", "SA"],
+            "golpes": ["P", "", "P", "K", "K", "K"],
+        },
+    }
+
+    simulator = FightSimulator()
+    winner = simulator.start_fight(fight_data)
+
+    assert winner is simulator.player_2
+    assert winner.energy == 3
+    assert simulator.player_1.energy == -1
