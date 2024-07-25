@@ -1,6 +1,6 @@
 import pytest
 
-from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
+from talaka_kombat_jrpg.model.player import ButtonCombination, Player, Skill
 
 
 @pytest.fixture

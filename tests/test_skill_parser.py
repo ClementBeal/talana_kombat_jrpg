@@ -1,7 +1,7 @@
 import pytest
-from talaka_kombat_jrpg.player import ButtonCombination, Player
-from talaka_kombat_jrpg.skill_parser import SkillParser
-from talaka_kombat_jrpg.skills.move import Move
+from talaka_kombat_jrpg.model.player import ButtonCombination, Player
+from talaka_kombat_jrpg.model.skill_parser import SkillParser
+from talaka_kombat_jrpg.model.skills.move import Move
 from tests.conftest import MockSkill
 
 

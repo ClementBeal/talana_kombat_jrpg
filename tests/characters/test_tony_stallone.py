@@ -1,8 +1,8 @@
-from talaka_kombat_jrpg.characters.tony_stallone import TonyStallone
-from talaka_kombat_jrpg.skills.patada import Patada
-from talaka_kombat_jrpg.skills.puno import Puno
-from talaka_kombat_jrpg.skills.remuyuken import Remuyuken
-from talaka_kombat_jrpg.skills.taladoken import Taladoken
+from talaka_kombat_jrpg.model.characters.tony_stallone import TonyStallone
+from talaka_kombat_jrpg.model.skills.patada import Patada
+from talaka_kombat_jrpg.model.skills.puno import Puno
+from talaka_kombat_jrpg.model.skills.remuyuken import Remuyuken
+from talaka_kombat_jrpg.model.skills.taladoken import Taladoken
 
 
 def test_tony_stallone__init():

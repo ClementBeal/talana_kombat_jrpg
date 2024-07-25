@@ -1,5 +1,5 @@
 import pytest
-from talaka_kombat_jrpg.player import Player, Skill
+from talaka_kombat_jrpg.model.player import Player, Skill
 
 
 @pytest.fixture

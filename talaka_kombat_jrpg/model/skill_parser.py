@@ -1,8 +1,8 @@
 import json
 from typing import Any
 
-from talaka_kombat_jrpg.player import Player, Skill
-from talaka_kombat_jrpg.skills.move import Move
+from talaka_kombat_jrpg.model.player import Player, Skill
+from talaka_kombat_jrpg.model.skills.move import Move
 
 
 class SkillParser:

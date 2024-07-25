@@ -1,7 +1,9 @@
-from talaka_kombat_jrpg.characters.arnaldor_shuatseneguer import ArnaldorShuatseneguer
-from talaka_kombat_jrpg.characters.tony_stallone import TonyStallone
-from talaka_kombat_jrpg.player import Player
-from talaka_kombat_jrpg.skill_parser import SkillParser
+from talaka_kombat_jrpg.model.characters.arnaldor_shuatseneguer import (
+    ArnaldorShuatseneguer,
+)
+from talaka_kombat_jrpg.model.characters.tony_stallone import TonyStallone
+from talaka_kombat_jrpg.model.player import Player
+from talaka_kombat_jrpg.model.skill_parser import SkillParser
 
 
 class FightSimulator:

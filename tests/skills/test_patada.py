@@ -1,5 +1,5 @@
-from talaka_kombat_jrpg.player import ButtonCombination
-from talaka_kombat_jrpg.skills.patada import Patada
+from talaka_kombat_jrpg.model.player import ButtonCombination
+from talaka_kombat_jrpg.model.skills.patada import Patada
 
 
 def test_patadata__get_dammage_message(player_1, player_2, player_1_name):
