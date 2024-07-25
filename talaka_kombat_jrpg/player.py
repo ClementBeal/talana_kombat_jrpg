@@ -32,6 +32,13 @@ class Skill(ABC):
     def get_dammage_message(
         self, origin_player: "Player", target_player: "Player"
     ) -> str:
+        """
+        Returns a message to describe the action that occurs during the game/fight
+
+        args:
+            origin_player: the player who used the skill.
+            target_player: the player who is the target of the skill.
+        """
         pass
 
 
@@ -49,10 +56,21 @@ class Player:
         self.skills.append(new_skill)
 
     def is_dead(self) -> bool:
+        """
+        Checks if the player is dead or not
+
+        returns True if the player is dead else false
+        """
         return self.energy <= 0
 
     def receive_dammage(self, skill: Skill):
+        """
+        Substracts thr skill's dammage to the current energy
+        """
         self.energy -= skill.dammage
 
     def attack(self, target: "Player", skill: Skill):
+        """
+        Attacks a player with a specific skill
+        """
         target.receive_dammage(skill)
