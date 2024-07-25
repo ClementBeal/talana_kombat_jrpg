@@ -45,3 +45,6 @@ class Player:
 
     def is_dead(self) -> bool:
         return self.energy <= 0
+
+    def receive_dammage(self, skill: Skill):
+        self.energy -= skill.cost

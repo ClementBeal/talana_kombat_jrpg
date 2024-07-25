@@ -1,4 +1,10 @@
+import pytest
 from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
+
+
+@pytest.fixture
+def player():
+    return Player("Player 1")
 
 
 def test_player__init():
@@ -9,7 +15,7 @@ def test_player__init():
     assert player.energy == 6
 
 
-def test_player__add_skill():
+def test_player__add_skill(player: Player):
     new_skill = Skill(
         name="Taladoken",
         cost=1,
@@ -18,7 +24,6 @@ def test_player__add_skill():
             move_buttons=["A"],
         ),
     )
-    player = Player(player_name="Tony")
     player.add_skill(new_skill)
 
     assert len(player.skills) == 1
@@ -29,7 +34,7 @@ def test_player__add_skill():
     assert player.skills[0].button_combination.move_buttons[0] == "A"
 
 
-def test_player__is_dead():
+def test_player__is_dead(player: Player):
     player = Player("Player 1")
 
     assert not player.is_dead()
@@ -39,11 +44,26 @@ def test_player__is_dead():
     assert player.is_dead()
 
 
-def test_player__is_dead__negative_value():
-    player = Player("Player 1")
-
+def test_player__is_dead__negative_value(player: Player):
     assert not player.is_dead()
 
     player.energy = -2
 
     assert player.is_dead()
+
+
+def test_player__receive_dammage(player: Player):
+    player = Player("Player 1")
+
+    player.receive_dammage(
+        Skill(
+            "Skill 1",
+            cost=2,
+            button_combination=ButtonCombination(
+                [],
+                [],
+            ),
+        )
+    )
+
+    assert player.energy == 4
