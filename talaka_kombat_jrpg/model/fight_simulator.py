@@ -43,8 +43,8 @@ class FightSimulator:
         while not self.player_1.is_dead() and not self.player_2.is_dead():
             # get the actions/skills for each player
 
-            player_1_skill = skill_parser.get_skill(self.player_1, True, tour)
-            player_2_skill = skill_parser.get_skill(self.player_2, False, tour)
+            player_1_skill = skill_parser.get_skills(self.player_1, True, tour)
+            player_2_skill = skill_parser.get_skills(self.player_2, False, tour)
 
             if tour == 0:
                 player_1_skill_len = player_1_skill.get_combination_length()
