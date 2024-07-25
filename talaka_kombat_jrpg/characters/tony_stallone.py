@@ -1,4 +1,4 @@
-from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
+from talaka_kombat_jrpg.player import ButtonCombination, Player
 from talaka_kombat_jrpg.skills.patada import Patada
 from talaka_kombat_jrpg.skills.puno import Puno
 from talaka_kombat_jrpg.skills.remuyuken import Remuyuken
