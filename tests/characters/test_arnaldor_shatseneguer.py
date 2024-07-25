@@ -6,20 +6,22 @@ def test_arnaldor_shatseneguer__init():
 
     assert arnaldor_shatseneguer.player_name == "Arnaldor Shuatseneguer"
     assert arnaldor_shatseneguer.energy == 6
-    assert len(arnaldor_shatseneguer.skills) == 3
+    assert len(arnaldor_shatseneguer.skills) == 4
 
     assert arnaldor_shatseneguer.skills[0].name == "Remuyuken"
     assert arnaldor_shatseneguer.skills[1].name == "Taladoken"
     assert arnaldor_shatseneguer.skills[2].name == "Patada"
+    assert arnaldor_shatseneguer.skills[3].name == "Puño"
 
     assert arnaldor_shatseneguer.skills[0].dammage == 3
     assert arnaldor_shatseneguer.skills[1].dammage == 2
     assert arnaldor_shatseneguer.skills[2].dammage == 1
+    assert arnaldor_shatseneguer.skills[3].dammage == 1
 
     assert arnaldor_shatseneguer.skills[0].button_combination.hit_button[0] == "K"
     assert arnaldor_shatseneguer.skills[1].button_combination.hit_button[0] == "P"
-    assert "P" in arnaldor_shatseneguer.skills[2].button_combination.hit_button
-    assert "K" in arnaldor_shatseneguer.skills[2].button_combination.hit_button
+    assert arnaldor_shatseneguer.skills[2].button_combination.hit_button[0] == "K"
+    assert arnaldor_shatseneguer.skills[3].button_combination.hit_button[0] == "P"
 
     assert arnaldor_shatseneguer.skills[0].button_combination.move_buttons == ["S", "A"]
     assert arnaldor_shatseneguer.skills[1].button_combination.move_buttons == [
@@ -28,3 +30,4 @@ def test_arnaldor_shatseneguer__init():
         "A",
     ]
     assert arnaldor_shatseneguer.skills[2].button_combination.move_buttons == []
+    assert arnaldor_shatseneguer.skills[3].button_combination.move_buttons == []

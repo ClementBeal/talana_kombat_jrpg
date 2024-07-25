@@ -28,7 +28,16 @@ class ArnaldorShuatseneguer(Player):
                 name="Patada",
                 dammage=1,
                 button_combination=ButtonCombination(
-                    hit_buttons=["P", "K"], move_buttons=[]
+                    hit_buttons=["K"], move_buttons=[]
+                ),
+            )
+        )
+        self.add_skill(
+            Skill(
+                name="Puño",
+                dammage=1,
+                button_combination=ButtonCombination(
+                    hit_buttons=["P"], move_buttons=[]
                 ),
             )
         )
