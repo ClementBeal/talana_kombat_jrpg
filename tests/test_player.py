@@ -27,3 +27,23 @@ def test_player__add_skill():
     assert player.skills[0].button_combination.hit_button == ["P"]
     assert len(player.skills[0].button_combination.move_buttons) == 1
     assert player.skills[0].button_combination.move_buttons[0] == "A"
+
+
+def test_player__is_dead():
+    player = Player("Player 1")
+
+    assert not player.is_dead()
+
+    player.energy = 0
+
+    assert player.is_dead()
+
+
+def test_player__is_dead__negative_value():
+    player = Player("Player 1")
+
+    assert not player.is_dead()
+
+    player.energy = -2
+
+    assert player.is_dead()

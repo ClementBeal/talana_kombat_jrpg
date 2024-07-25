@@ -42,3 +42,6 @@ class Player:
 
     def add_skill(self, new_skill: Skill):
         self.skills.append(new_skill)
+
+    def is_dead(self) -> bool:
+        return self.energy <= 0
