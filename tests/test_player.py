@@ -1,26 +1,10 @@
 import pytest
-from talaka_kombat_jrpg.player import ButtonCombination, Player, Skill
+from talaka_kombat_jrpg.player import Player, Skill
 
 
 @pytest.fixture
 def player(player_1: Player):
     return player_1
-
-
-class MockSkill(Skill):
-    def __init__(self) -> None:
-        super().__init__(
-            2,
-            ButtonCombination([], []),
-        )
-
-    def get_dammage_message(self, origin_player: Player, target_player: Player) -> str:
-        return ""
-
-
-@pytest.fixture
-def skill():
-    return MockSkill()
 
 
 def test_player__init():
