@@ -22,11 +22,9 @@ class ButtonCombination:
 class Skill(ABC):
     def __init__(
         self,
-        name: str,
         dammage: int,
         button_combination: ButtonCombination,
     ) -> None:
-        self.name = name
         self.dammage = dammage
         self.button_combination = button_combination
 

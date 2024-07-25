@@ -10,7 +10,6 @@ def player(player_1: Player):
 class MockSkill(Skill):
     def __init__(self) -> None:
         super().__init__(
-            "MockSkill",
             2,
             ButtonCombination([], []),
         )
