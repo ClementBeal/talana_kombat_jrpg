@@ -14,7 +14,7 @@ def test_player__add_skill():
         name="Taladoken",
         cost=1,
         button_combination=ButtonCombination(
-            hit_button="P",
+            hit_buttons=["P"],
             move_buttons=["A"],
         ),
     )
@@ -24,6 +24,6 @@ def test_player__add_skill():
     assert len(player.skills) == 1
     assert player.skills[0].name == "Taladoken"
     assert player.skills[0].cost == 1
-    assert player.skills[0].button_combination.hit_button == "P"
+    assert player.skills[0].button_combination.hit_button == ["P"]
     assert len(player.skills[0].button_combination.move_buttons) == 1
     assert player.skills[0].button_combination.move_buttons[0] == "A"
