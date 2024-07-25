@@ -47,6 +47,11 @@ class Skill(ABC):
     def matchs_combination(self, combination: ButtonCombination) -> bool:
         return self.button_combination == combination
 
+    def get_combination_length(self) -> int:
+        return len(self.button_combination.hit_buttons) + len(
+            self.button_combination.move_buttons
+        )
+
 
 class Player:
     def __init__(

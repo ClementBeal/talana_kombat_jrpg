@@ -1,5 +1,6 @@
 import pytest
-from talaka_kombat_jrpg.model.player import Player, Skill
+from talaka_kombat_jrpg.model.player import ButtonCombination, Player, Skill
+from tests.conftest import MockSkill
 
 
 @pytest.fixture
@@ -52,3 +53,18 @@ def test_player__attack(player: Player, skill: Skill):
     player.attack(target_player, skill)
 
     assert target_player.energy == 4
+
+
+def test_skill__get_combination_length(skill: MockSkill):
+    skill.change_combination(
+        ButtonCombination(hit_buttons=["P"], move_buttons=["A", "A", "D"])
+    )
+    assert skill.get_combination_length() == 4
+
+    skill.change_combination(
+        ButtonCombination(hit_buttons=["P"], move_buttons=["A", "A", "D", "W", "S"])
+    )
+    assert skill.get_combination_length() == 6
+
+    skill.change_combination(ButtonCombination(hit_buttons=["P"], move_buttons=[]))
+    assert skill.get_combination_length() == 1

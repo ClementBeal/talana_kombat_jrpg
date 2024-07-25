@@ -47,8 +47,9 @@ class FightSimulator:
             player_2_skill = skill_parser.get_skill(self.player_2, False, tour)
 
             if tour == 0:
-                # 1. find the first player to attack
-                pass
+                player_1_skill_len = player_1_skill.get_combination_length()
+                player_2_skill_len = player_2_skill.get_combination_length()
+                player_1_is_first = player_1_skill_len <= player_2_skill_len
 
             if player_1_is_first:
                 self.player_1.attack(self.player_2, player_1_skill)
