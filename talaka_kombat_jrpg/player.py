@@ -80,3 +80,5 @@ class Player:
         Attacks a player with a specific skill
         """
         target.receive_dammage(skill)
+
+        print(skill.get_dammage_message(self, target))
