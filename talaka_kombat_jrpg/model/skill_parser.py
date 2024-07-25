@@ -18,12 +18,30 @@ class SkillParser:
         current_moves = self.fight_data[player_key]["movimientos"][tour]
         current_hit = self.fight_data[player_key]["golpes"][tour]
 
-        if current_hit == "":
-            print(current_moves)
-            return [Move(direction) for direction in current_moves]
+        skills: list[Skill] = []
+        index = 0
+
+        if current_moves == "":
+            for skill in player.skills:
+                if skill.button_combination.matches_string(current_hit, ""):
+                    # we can only have one hit/golpe each turn
+                    return [skill]
+
+        while index < len(current_moves):
+            for skill in player.skills:
+                if skill.button_combination.matches_string(
+                    current_hit, current_moves[index:]
+                ):
+                    # it means we have a combination and it's always the last move of a sequence
+                    # that's why we return all the skills
+                    skills.append(skill)
+                    return skills
+            skills.append(Move(current_moves[index]))
+            index += 1
 
         for skill in player.skills:
-            if skill.button_combination.matches_string(current_hit, current_moves):
-                return [skill]
+            if skill.button_combination.matches_string(current_hit, ""):
+                # we can only have one hit/golpe each turn
+                skills.append(skill)
 
-        raise NotImplementedError()
+        return skills
