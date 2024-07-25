@@ -48,3 +48,6 @@ class Player:
 
     def receive_dammage(self, skill: Skill):
         self.energy -= skill.cost
+
+    def attack(self, target: "Player", skill: Skill):
+        target.receive_dammage(skill)

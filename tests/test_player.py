@@ -7,6 +7,18 @@ def player():
     return Player("Player 1")
 
 
+@pytest.fixture
+def skill():
+    return Skill(
+        "Skill 1",
+        cost=2,
+        button_combination=ButtonCombination(
+            [],
+            [],
+        ),
+    )
+
+
 def test_player__init():
     player_name = "Tony"
     player = Player(player_name=player_name)
@@ -52,18 +64,15 @@ def test_player__is_dead__negative_value(player: Player):
     assert player.is_dead()
 
 
-def test_player__receive_dammage(player: Player):
-    player = Player("Player 1")
-
-    player.receive_dammage(
-        Skill(
-            "Skill 1",
-            cost=2,
-            button_combination=ButtonCombination(
-                [],
-                [],
-            ),
-        )
-    )
+def test_player__receive_dammage(player: Player, skill: Skill):
+    player.receive_dammage(skill)
 
     assert player.energy == 4
+
+
+def test_player__attack(player: Player, skill: Skill):
+    target_player = Player("Target")
+
+    player.attack(target_player, skill)
+
+    assert target_player.energy == 4
