@@ -9,7 +9,7 @@ def player(player_1: Player):
 
 def test_player__init():
     player_name = "Tony"
-    player = Player(player_name=player_name)
+    player = Player(name=player_name)
 
     assert player.player_name == player_name
     assert player.energy == 6

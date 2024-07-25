@@ -51,10 +51,10 @@ class Skill(ABC):
 class Player:
     def __init__(
         self,
-        player_name: str,
+        name: str,
         energy: int = 6,
     ) -> None:
-        self.player_name = player_name
+        self.player_name = name
         self.energy = energy
         self.skills: list[Skill] = []
 

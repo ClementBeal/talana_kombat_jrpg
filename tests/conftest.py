@@ -10,7 +10,7 @@ def player_1_name() -> str:
 
 @pytest.fixture
 def player_1(player_1_name) -> Player:
-    return Player(player_name=player_1_name)
+    return Player(name=player_1_name)
 
 
 @pytest.fixture
@@ -20,7 +20,7 @@ def player_2_name() -> str:
 
 @pytest.fixture
 def player_2(player_2_name):
-    return Player(player_name=player_2_name)
+    return Player(name=player_2_name)
 
 
 class MockSkill(Skill):
