@@ -18,6 +18,9 @@ class ButtonCombination:
         self.hit_buttons = hit_buttons
         self.move_buttons = move_buttons
 
+    def matches_string(self, hits: str, moves: str) -> bool:
+        return "".join(self.hit_buttons) == hits and "".join(self.move_buttons) == moves
+
 
 class Skill(ABC):
     def __init__(
@@ -40,6 +43,9 @@ class Skill(ABC):
             target_player: the player who is the target of the skill.
         """
         pass
+
+    def matchs_combination(self, combination: ButtonCombination) -> bool:
+        return self.button_combination == combination
 
 
 class Player:
