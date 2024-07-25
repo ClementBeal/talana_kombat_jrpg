@@ -12,9 +12,9 @@ def test_arnaldor_shatseneguer__init():
     assert arnaldor_shatseneguer.skills[1].name == "Taladoken"
     assert arnaldor_shatseneguer.skills[2].name == "Patada"
 
-    assert arnaldor_shatseneguer.skills[0].cost == 3
-    assert arnaldor_shatseneguer.skills[1].cost == 2
-    assert arnaldor_shatseneguer.skills[2].cost == 1
+    assert arnaldor_shatseneguer.skills[0].dammage == 3
+    assert arnaldor_shatseneguer.skills[1].dammage == 2
+    assert arnaldor_shatseneguer.skills[2].dammage == 1
 
     assert arnaldor_shatseneguer.skills[0].button_combination.hit_button[0] == "K"
     assert arnaldor_shatseneguer.skills[1].button_combination.hit_button[0] == "P"

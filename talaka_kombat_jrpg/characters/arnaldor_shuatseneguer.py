@@ -8,7 +8,7 @@ class ArnaldorShuatseneguer(Player):
         self.add_skill(
             Skill(
                 name="Remuyuken",
-                cost=3,
+                dammage=3,
                 button_combination=ButtonCombination(
                     hit_buttons=["K"], move_buttons=["S", "A"]
                 ),
@@ -17,7 +17,7 @@ class ArnaldorShuatseneguer(Player):
         self.add_skill(
             Skill(
                 name="Taladoken",
-                cost=2,
+                dammage=2,
                 button_combination=ButtonCombination(
                     hit_buttons=["P"], move_buttons=["A", "S", "A"]
                 ),
@@ -26,7 +26,7 @@ class ArnaldorShuatseneguer(Player):
         self.add_skill(
             Skill(
                 name="Patada",
-                cost=1,
+                dammage=1,
                 button_combination=ButtonCombination(
                     hit_buttons=["P", "K"], move_buttons=[]
                 ),

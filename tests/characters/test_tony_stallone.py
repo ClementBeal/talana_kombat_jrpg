@@ -12,9 +12,9 @@ def test_tony_stallone__init():
     assert tony_stallone.skills[1].name == "Remuyuken"
     assert tony_stallone.skills[2].name == "Patada"
 
-    assert tony_stallone.skills[0].cost == 3
-    assert tony_stallone.skills[1].cost == 2
-    assert tony_stallone.skills[2].cost == 1
+    assert tony_stallone.skills[0].dammage == 3
+    assert tony_stallone.skills[1].dammage == 2
+    assert tony_stallone.skills[2].dammage == 1
 
     assert tony_stallone.skills[0].button_combination.hit_button[0] == "P"
     assert tony_stallone.skills[1].button_combination.hit_button[0] == "K"

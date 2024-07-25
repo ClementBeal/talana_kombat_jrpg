@@ -22,11 +22,11 @@ class Skill:
     def __init__(
         self,
         name: str,
-        cost: int,
+        dammage: int,
         button_combination: ButtonCombination,
     ) -> None:
         self.name = name
-        self.cost = cost
+        self.dammage = dammage
         self.button_combination = button_combination
 
 
@@ -47,7 +47,7 @@ class Player:
         return self.energy <= 0
 
     def receive_dammage(self, skill: Skill):
-        self.energy -= skill.cost
+        self.energy -= skill.dammage
 
     def attack(self, target: "Player", skill: Skill):
         target.receive_dammage(skill)
