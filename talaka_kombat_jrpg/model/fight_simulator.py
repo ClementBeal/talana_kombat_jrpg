@@ -1,3 +1,4 @@
+from typing import Any
 from talaka_kombat_jrpg.model.characters.arnaldor_shuatseneguer import (
     ArnaldorShuatseneguer,
 )
@@ -26,7 +27,7 @@ class FightSimulator:
         self.player_1: Player = TonyStallone()
         self.player_2: Player = ArnaldorShuatseneguer()
 
-    def start_fight(self, fight_data: str) -> Player:
+    def start_fight(self, fight_data: dict[str, Any]) -> Player:
         """
         Simulates a fight between 2 players
 

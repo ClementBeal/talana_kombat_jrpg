@@ -14,9 +14,9 @@ def create_app():
             if not fight_data or not isinstance(fight_data, dict):
                 return jsonify({"error": "Invalid fight data provided."}), 400
 
+            return jsonify({"result": "good request"}), 200
             result = FightSimulator().start_fight(fight_data)
 
-            # 4. Return the result as JSON
             return jsonify({"result": result}), 200
 
         except Exception as e:
