@@ -10,8 +10,13 @@ def test_player__init():
 
 
 def test_player__add_skill():
+    new_skill = Skill(
+        name="Taladoken",
+        cost=1,
+    )
     player = Player(player_name="Tony")
-    player.add_skill(Skill(name="Taladoken"))
+    player.add_skill(new_skill)
 
     assert len(player.skills) == 1
     assert player.skills[0].name == "Taladoken"
+    assert player.skills[0].cost == 1

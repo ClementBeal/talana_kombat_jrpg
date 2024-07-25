@@ -1,6 +1,11 @@
 class Skill:
-    def __init__(self, name: str) -> None:
+    def __init__(
+        self,
+        name: str,
+        cost: int,
+    ) -> None:
         self.name = name
+        self.cost = cost
 
 
 class Player:
