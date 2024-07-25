@@ -1,0 +1,3 @@
+ruff # formatter, linter
+
+pytest # tests
