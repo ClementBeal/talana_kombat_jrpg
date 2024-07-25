@@ -27,10 +27,10 @@ def test_arnaldor_shatseneguer__init():
     assert patada.dammage == 1
     assert puno.dammage == 1
 
-    assert remuyuken.button_combination.hit_button[0] == "K"
-    assert taladoken.button_combination.hit_button[0] == "P"
-    assert patada.button_combination.hit_button[0] == "K"
-    assert puno.button_combination.hit_button[0] == "P"
+    assert remuyuken.button_combination.hit_buttons[0] == "K"
+    assert taladoken.button_combination.hit_buttons[0] == "P"
+    assert patada.button_combination.hit_buttons[0] == "K"
+    assert puno.button_combination.hit_buttons[0] == "P"
 
     assert remuyuken.button_combination.move_buttons == ["S", "A"]
     assert taladoken.button_combination.move_buttons == [

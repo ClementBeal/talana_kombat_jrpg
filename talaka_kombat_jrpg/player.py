@@ -15,7 +15,7 @@ class ButtonCombination:
         hit_buttons: list[Literal["P", "K"]],
         move_buttons: list[Literal["A", "W", "S", "D"]],
     ) -> None:
-        self.hit_button = hit_buttons
+        self.hit_buttons = hit_buttons
         self.move_buttons = move_buttons
 
 
