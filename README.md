@@ -1,5 +1,9 @@
 # Talana Komba JRPG
 
+Fight simulation between 2 players. It uses JSON data to do the simulation.
+
+The API is available under `http://0.0.0.0:8000`
+
 ## Set up the project
 
 On Linux
@@ -21,7 +25,7 @@ pip install -r requirements.txt
 
 ## How to run locally the API
 
-`gunicorn --bind 0.0.0.0:8000 -w 4 "talaka_kombat_jrpg:create_app()"`
+`gunicorn --bind 0.0.0.0:8000 --reload -w 4 "talaka_kombat_jrpg:create_app()"`
 
 ## Test the API with cURL
 
