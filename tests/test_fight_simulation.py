@@ -14,7 +14,8 @@ def test_fight_simulator():
     }
 
     simulator = FightSimulator()
-    winner = simulator.start_fight(fight_data)
+    result = simulator.start_fight(fight_data)
+    winner = result.winner
 
     assert winner is simulator.player_2
     assert winner.energy == 2
@@ -31,7 +32,8 @@ def test_fight_simulator__two():
     }
 
     simulator = FightSimulator()
-    winner = simulator.start_fight(fight_data)
+    result = simulator.start_fight(fight_data)
+    winner = result.winner
 
     assert winner is simulator.player_2
     assert winner.energy == 3
@@ -51,7 +53,8 @@ def test_fight_simulator__three():
     }
 
     simulator = FightSimulator()
-    winner = simulator.start_fight(fight_data)
+    result = simulator.start_fight(fight_data)
+    winner = result.winner
 
     assert winner is simulator.player_1
     assert winner.energy == 1

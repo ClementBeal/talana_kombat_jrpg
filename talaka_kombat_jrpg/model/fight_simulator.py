@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Any
 from talaka_kombat_jrpg.model.characters.arnaldor_shuatseneguer import (
     ArnaldorShuatseneguer,
@@ -5,6 +6,12 @@ from talaka_kombat_jrpg.model.characters.arnaldor_shuatseneguer import (
 from talaka_kombat_jrpg.model.characters.tony_stallone import TonyStallone
 from talaka_kombat_jrpg.model.player import Player, Skill
 from talaka_kombat_jrpg.model.skill_parser import SkillParser
+
+
+@dataclass
+class FightResult:
+    winner: Player
+    history: str
 
 
 class FightSimulator:
@@ -27,7 +34,7 @@ class FightSimulator:
         self.player_1: Player = TonyStallone()
         self.player_2: Player = ArnaldorShuatseneguer()
 
-    def start_fight(self, fight_data: dict[str, Any]) -> Player:
+    def start_fight(self, fight_data: dict[str, Any]) -> FightResult:
         """
         Simulates a fight between 2 players
 
@@ -35,6 +42,7 @@ class FightSimulator:
         """
         tour = 0
         player_1_is_first = True
+        history: list[str] = []
 
         skill_parser = SkillParser()
         skill_parser.parse(fight_data)
@@ -52,26 +60,43 @@ class FightSimulator:
                 # player_1_is_first = player_1_skill_len <= player_2_skill_len
 
             if player_1_is_first:
-                self._player_attack(self.player_1, self.player_2, player_1_skill)
-                if not self.player_2.is_dead():
-                    self._player_attack(self.player_2, self.player_1, player_2_skill)
-            else:
-                self._player_attack(self.player_2, self.player_1, player_2_skill)
-                if not self.player_1.is_dead():
+                history.extend(
                     self._player_attack(self.player_1, self.player_2, player_1_skill)
+                )
+                if not self.player_2.is_dead():
+                    history.extend(
+                        self._player_attack(
+                            self.player_2, self.player_1, player_2_skill
+                        )
+                    )
+            else:
+                history.extend(
+                    self._player_attack(self.player_2, self.player_1, player_2_skill)
+                )
+                if not self.player_1.is_dead():
+                    history.extend(
+                        self._player_attack(
+                            self.player_1, self.player_2, player_1_skill
+                        )
+                    )
 
             tour += 1
 
-        alive_player = self.player_1 if self.player_2.is_dead() else self.player_2
+        winner = self.player_1 if self.player_2.is_dead() else self.player_2
 
-        print(
-            f"{alive_player.player_name} Gana la pelea y aun le queda {alive_player.energy} de energía"
+        history.append(
+            f"{winner.player_name} Gana la pelea y aun le queda {winner.energy} de energía"
         )
 
-        return alive_player
+        return FightResult(winner, "\n".join(history))
 
     def _player_attack(
         self, origin_player: Player, target_player: Player, skills: list[Skill]
-    ):
+    ) -> list[str]:
+        history: list[str] = []
+
         for skill in skills:
-            origin_player.attack(target_player, skill)
+            action_result = origin_player.attack(target_player, skill)
+            history.append(action_result)
+
+        return history

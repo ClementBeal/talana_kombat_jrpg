@@ -80,10 +80,10 @@ class Player:
         """
         self.energy -= skill.dammage
 
-    def attack(self, target: "Player", skill: Skill):
+    def attack(self, target: "Player", skill: Skill) -> str:
         """
         Attacks a player with a specific skill
         """
         target.receive_dammage(skill)
 
-        print(skill.get_dammage_message(self, target))
+        return skill.get_dammage_message(self, target)
