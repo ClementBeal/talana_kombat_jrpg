@@ -49,18 +49,21 @@ class FightSimulator:
         skill_parser = SkillParser(fight_data)
 
         # we don't stop the fight until one of the player is dead
+        # // TODO : it can run endlessly if the data doesn't contain the death of a player
         while not self.player_1.is_dead() and not self.player_2.is_dead():
             # get the actions/skills for each player
             player_1_skill = skill_parser.get_skills(self.player_1, True, tour)
             player_2_skill = skill_parser.get_skills(self.player_2, False, tour)
 
             if tour == 0:
+                # we choose the order of the players, who's going to play first
                 pass
                 # player_1_skill_len = player_1_skill.get_combination_length()
                 # player_2_skill_len = player_2_skill.get_combination_length()
                 # player_1_is_first = player_1_skill_len <= player_2_skill_len
 
             if player_1_is_first:
+                # player 1 attacks -> if player 2 is still alive, he attacks
                 history.extend(
                     self._player_attack(self.player_1, self.player_2, player_1_skill)
                 )
@@ -71,6 +74,7 @@ class FightSimulator:
                         )
                     )
             else:
+                # player 2 attacks -> if player 1 is still alive, he attacks
                 history.extend(
                     self._player_attack(self.player_2, self.player_1, player_2_skill)
                 )
