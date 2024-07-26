@@ -10,10 +10,8 @@ def skill_parser():
     return SkillParser()
 
 
-def test_skill_parser__only_moves(
-    skill_parser: SkillParser, player_1_with_skill: Player
-):
-    skill_parser.parse(
+def test_skill_parser__only_moves(player_1_with_skill: Player):
+    skill_parser = SkillParser(
         {
             "player1": {"movimientos": ["AS"], "golpes": [""]},
             "player2": {"movimientos": [], "golpes": []},
@@ -26,13 +24,11 @@ def test_skill_parser__only_moves(
     assert all([isinstance(skill, Move) for skill in skills])
 
 
-def test_skill_parser__only_hit(
-    skill_parser: SkillParser, player_1: Player, skill: MockSkill
-):
+def test_skill_parser__only_hit(player_1: Player, skill: MockSkill):
     skill.change_combination(ButtonCombination(["P"], []))
     player_1.add_skill(skill)
 
-    skill_parser.parse(
+    skill_parser = SkillParser(
         {
             "player1": {"movimientos": [""], "golpes": ["P"]},
             "player2": {"movimientos": [""], "golpes": [""]},

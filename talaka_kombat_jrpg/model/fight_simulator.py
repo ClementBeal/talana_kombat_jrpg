@@ -16,6 +16,8 @@ class FightResult:
 
 class FightSimulator:
     """
+    Simulate a fight between 2 players pre defined.
+    The simulator receive a JSON with the format defined below. Those data are parsed to execute action between the players.
 
     Example of JSON :
     {
@@ -36,16 +38,15 @@ class FightSimulator:
 
     def start_fight(self, fight_data: dict[str, Any]) -> FightResult:
         """
-        Simulates a fight between 2 players
+        Simulates a fight between 2 players using fight data.
 
-        Returns the winner
+        Returns a fight result
         """
         tour = 0
         player_1_is_first = True
         history: list[str] = []
 
-        skill_parser = SkillParser()
-        skill_parser.parse(fight_data)
+        skill_parser = SkillParser(fight_data)
 
         # we don't stop the fight until one of the player is dead
         while not self.player_1.is_dead() and not self.player_2.is_dead():

@@ -45,12 +45,24 @@ class Skill(ABC):
         pass
 
     def get_combination_length(self) -> int:
+        """
+        Returns the length of the combination.
+        For example, if we have the moves "A" et "W" and the hit "P", we have 2 + 1 buttons so 3.
+        """
         return len(self.button_combination.hit_buttons) + len(
             self.button_combination.move_buttons
         )
 
 
 class Player:
+    """
+    Represents a player. A payer has energy and skills. Skills can be moves or a special combo to attack an ennemy.
+
+    Args:
+        name: the name of the player
+        energy: the initial energy/life of the player
+    """
+
     MAX_ENERGY = 6
 
     def __init__(
@@ -63,6 +75,9 @@ class Player:
         self.skills: list[Skill] = []
 
     def add_skill(self, new_skill: Skill):
+        """
+        Add a skill that the player can use
+        """
         self.skills.append(new_skill)
 
     def is_dead(self) -> bool:
@@ -82,6 +97,8 @@ class Player:
     def attack(self, target: "Player", skill: Skill) -> str:
         """
         Attacks a player with a specific skill
+
+        Returns the attack message
         """
         target.receive_dammage(skill)
 

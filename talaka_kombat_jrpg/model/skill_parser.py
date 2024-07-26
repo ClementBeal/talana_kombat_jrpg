@@ -9,7 +9,7 @@ class SkillParser:
     Part of the fight simulator that parse the inputs (moves + hit) of each player and that find the skill associated to this action
     """
 
-    def parse(self, fight_data: dict[str, Any]) -> None:
+    def __init__(self, fight_data: dict[str, Any]) -> None:
         self.fight_data: dict[str, Any] = fight_data
 
     def get_skills(self, player: Player, is_player_1: bool, tour: int) -> list[Skill]:
