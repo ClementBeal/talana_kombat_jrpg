@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 ```bash
 curl -X POST -H "Content-Type: application/json" \
-     -d '{"player1": {"movimientos": ["D", "DSD"], "golpes": ["K", "P"]}, "player2": {"movimientos": ["SA", "ASA"], "golpes": ["K", "P"]}}' \
+     -d '{"player1":{"movimientos":["D","DSD","S","DSD","SD"],"golpes":["K","P","","K","P"]},"player2":{"movimientos":["SA","SA","SA","ASA","SA"],"golpes":["K","","K","P","P"]}}' \
      http://localhost:8000/simulate_fight
 ```
 
