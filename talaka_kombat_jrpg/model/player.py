@@ -51,10 +51,12 @@ class Skill(ABC):
 
 
 class Player:
+    MAX_ENERGY = 6
+
     def __init__(
         self,
         name: str,
-        energy: int = 6,
+        energy: int = MAX_ENERGY,
     ) -> None:
         self.player_name = name
         self.energy = energy
